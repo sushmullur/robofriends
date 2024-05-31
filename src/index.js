@@ -4,7 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createRoot } from 'react-dom/client';
 import { createLogger } from 'redux-logger';
 import { thunk } from 'redux-thunk';
-import { searchRobots } from './reducers'; 
+import rootReducer from './reducers'; 
 import './index.css';
 import App from './containers/App';
 import 'tachyons';
@@ -12,10 +12,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 const logger = createLogger();
 const store = configureStore({
-  reducer: {
-    searchRobots: searchRobots
-  },
-
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk, logger)
 });
 
